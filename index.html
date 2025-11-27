@@ -1,65 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2048 Game</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>2048 — Учебная версия</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-    <h1>2048</h1>
-
-    <div id="score-box">Счёт: <span id="score">0</span></div>
-
-    <div id="game-container">
-      
-        <div id="grid"></div>
-    </div>
-
-
-    <div id="mobile-controls" class="hidden">
-        <button data-dir="up">▲</button>
-        <div class="horizontal">
-            <button data-dir="left">◀</button>
-            <button data-dir="right">▶</button>
+  <main class="app">
+    <header class="header">
+      <h1 class="title">2048</h1>
+      <div class="scoreboard">
+        <div class="score-box">
+          <div class="label">Счёт</div>
+          <div id="score" class="value">0</div>
         </div>
-        <button data-dir="down">▼</button>
-    </div>
-
-   
-    <div id="actions">
-        <button id="restart-btn">Начать заново</button>
-        <button id="undo-btn">Отмена хода</button>
-        <button id="leaders-btn">Лидеры</button>
-    </div>
-
-
-    <div id="game-over" class="hidden">
-        <div id="game-over-content">
-            <p id="game-over-message">Игра окончена!</p>
-            <input id="name-input" placeholder="Введите имя">
-            <button id="save-result-btn">Сохранить результат</button>
-            <button id="restart-btn2">Начать заново</button>
+        <div class="controls">
+          <button id="btn-undo" class="btn" title="Отмена хода">↶</button>
+          <button id="btn-restart" class="btn" title="Начать заново">⟳</button>
+          <button id="btn-leaders" class="btn" title="Лидерборд">🏆</button>
         </div>
-    </div>
+      </div>
+    </header>
 
-    
-    <div id="leaders-modal" class="hidden">
-        <h2>Таблица лидеров</h2>
-        <table id="leaders-table">
-            <thead>
-                <tr>
-                    <th>Имя</th>
-                    <th>Очки</th>
-                    <th>Дата</th>
-                </tr>
-            </thead>
-            <tbody id="leaders-body"></tbody>
-        </table>
-        <button id="close-leaders-btn">Закрыть</button>
-    </div>
+    <section class="game-area">
+      <div id="grid-container" class="grid-container" aria-label="Поле 4 на 4" role="application"></div>
 
-    <script src="script.js"></script>
+      <div id="overlay" class="overlay hidden" aria-hidden="true">
+        <div class="modal">
+          <div id="game-over-box" class="game-over">
+            <p id="game-over-msg" class="msg">Игра окончена</p>
+            <input id="player-name" class="name-input" type="text" placeholder="Введите имя" />
+            <div class="modal-actions">
+              <button id="save-score" class="btn primary">Сохранить</button>
+              <button id="restart-2" class="btn">Начать заново</button>
+            </div>
+          </div>
+          <div id="leaderboard-box" class="leaderboard hidden">
+            <h3>Топ-10 рекордов</h3>
+            <table id="leaders-table" class="leaders-table" aria-label="Таблица рекордов">
+              <thead>
+                <tr><th>Имя</th><th>Очки</th><th>Дата</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <div class="modal-actions">
+              <button id="close-leaders" class="btn">Закрыть</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav id="mobile-controls" class="mobile-controls hidden" aria-hidden="true">
+        <button data-dir="up" class="mbtn">↑</button>
+        <div class="mrow">
+          <button data-dir="left" class="mbtn">←</button>
+          <button data-dir="down" class="mbtn">↓</button>
+          <button data-dir="right" class="mbtn">→</button>
+        </div>
+      </nav>
+    </section>
+
+    <footer class="footer">
+      <small>Реализация — студент 3 курса. Сохранение в localStorage.</small>
+    </footer>
+  </main>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
