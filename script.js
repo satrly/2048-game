@@ -458,3 +458,12 @@ init();
 window.addEventListener('beforeunload', saveState);
 
 
+const controls = document.getElementById("mobile-controls");
+
+function showControls() {
+    controls.classList.remove("hidden");
+}
+
+function hideControls() {
+    controls.classList.add("hidden");
+}
